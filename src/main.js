@@ -10,22 +10,47 @@ import router from './router'
 import './style.less'
 import './assets/zhaopeng.scss'
 import Loading from './components/All.js'
-
+import Vuex from 'vuex'
+// import store from './store.js'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 Vue.use(MintUI)
 Vue.use(ElementUI)
 Vue.use(Loading)
+Vue.use(Vuex)
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment: state => state.count++,
+    decrement: state => state.count--
+  }
+})
 
-
-
-
-new Vue({
+var vm = new Vue({
   el: '#app',
+  store,
   router,
   template: '<App/>',
-  components: { App}
+  components: { App,Loading},
+  computed: {
+    count () {
+      return store.state.count
+    }
+  },
+  methods: {
+    increment () {
+      store.commit('increment')
+    },
+    decrement () {
+      store.commit('decrement')
+    }
+  }
+
+
+
 })
 
 

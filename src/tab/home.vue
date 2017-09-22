@@ -1,16 +1,20 @@
 
 <template>
 	<div class="home">
-      <footer-tab></footer-tab>
-  </div>
+        <my-header></my-header>
+        <calssify-list></calssify-list>
+    </div>
 
 </template>
 
 <script>
 export default {
-name: 'hello'
+
+
 }
+
 </script>
 
 <style scoped>
+
 </style>
